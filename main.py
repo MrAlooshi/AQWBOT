@@ -5,6 +5,7 @@ import time
 import random
 import pyautogui
 import keyboard
+import pygetwindow as gw
 
 # 1. Simple instructions
 print("Script is ready to start.")
@@ -40,4 +41,3 @@ while True:
     time.sleep(random.uniform(2, 4))
     pyautogui.press('5')
     time.sleep(random.uniform(0.3, 2))
-
