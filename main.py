@@ -56,7 +56,7 @@ def capture_game_screen(hwnd):
 
 
 
-def map_abilities(): # No need to pass arguments
+def map_abilities(): # allows user to map their abilities as health or attack skills.
     """Allows user to map their abilities as health or attack skills."""
     global ABILITY_TYPES
     print("\n=== ABILITY MAPPING ===")
@@ -111,7 +111,7 @@ def run_bot_logic(hwnd, game_window):
         else:
             # --- DEFAULT ROTATION (NO MAPPING DONE) ---
             default_skills = [1, 2, 3, 4, 5]
-            # Shuffle the list of default skills to randomize the order! ✅
+            # Shuffle the list of default skills to randomize the order! 
             random.shuffle(default_skills)
 
             for skill_number in default_skills:
@@ -184,26 +184,28 @@ while True:
         bot_thread.start()
 
         # Inner loop for hotkeys while the bot is running
-        while True:
-            if keyboard.is_pressed('x'):
-                print("\nStop key pressed. Stopping bot and returning to main menu...")
-                stop_thread = True
-                bot_thread.join()
-                game_window.moveTo(100, 100)
+    while True:
+        if keyboard.is_pressed('x'):
+            print("\nStop key pressed. Stopping bot and returning to main menu...")
+            stop_thread = True
+            bot_thread.join()
+            game_window.moveTo(100, 100)
+            try:
+                game_window.show() # Ensure window is visible after stopping
                 game_window.activate()
-                # 'break' exits this inner loop and returns to the main menu loop
-                break
+            except Exception:
+                pass # Ignore errors if window is already visible/active
+            break
 
-            if keyboard.is_pressed('q'):
-                print("Hiding window...")
-                game_window.moveTo(-2000, 0)
-                time.sleep(0.5)
+        if keyboard.is_pressed('q'):
+            print("Hiding window (bot continues running)...")
+            game_window.hide() # hides the window
+            time.sleep(0.5)
 
-            if keyboard.is_pressed('y'):
-                print("Showing window...")
-                game_window.moveTo(100, 100)
-                game_window.activate()
-                time.sleep(0.5)
+        if keyboard.is_pressed('y'):
+            print("Showing window...")
+            game_window.show() # shows the window
+            time.sleep(0.5)
             
-            time.sleep(0.1)
+        time.sleep(0.1)
         
