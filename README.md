@@ -1,1 +1,1 @@
-To download the script, navigate to /dist then download the main.exe from dist
+To download the script, navigate to releases and simply download the exe file
