@@ -1,0 +1,31 @@
+# Python cache and bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment folder 
+
+.venv/
+
+# Build and distribution artifacts from PyInstaller/setuptools
+build/
+dist/
+*.egg-info/
+*.spec
+
+
+
+
+.env
+.env.*
+!.env.example
+
+# Testing artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

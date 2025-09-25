@@ -147,7 +147,7 @@ while True:
     # 3. Print the main menu options
     print("\n--- Bot Main Menu ---")
     print("Hold 'z' -> START the bot")
-    print("Hold 'm' -> MAP abilities")
+    print("Hold '*' -> MAP abilities")
     print("---------------------")
     # Show the current status
     if ABILITY_TYPES:
@@ -161,7 +161,7 @@ while True:
         if keyboard.is_pressed('z'):
             action = 'start'
             break
-        if keyboard.is_pressed('m'):
+        if keyboard.is_pressed('*'):
             action = 'map'
             break
         time.sleep(0.05) # Prevents high CPU usage
@@ -177,7 +177,7 @@ while True:
     elif action == 'start':
         # This block runs the bot
         print("\nBot is now active...")
-        print("Hold 'q' to hide, 'y' to show, 'x' to STOP.")
+        print("Hold '½' to hide, '#' to show, '¤' to STOP.")
         
         stop_thread = False
         bot_thread = threading.Thread(target=run_bot_logic, args=(hwnd, game_window), daemon=True)
@@ -185,7 +185,7 @@ while True:
 
         # Inner loop for hotkeys while the bot is running
     while True:
-        if keyboard.is_pressed('x'):
+        if keyboard.is_pressed('¤'):
             print("\nStop key pressed. Stopping bot and returning to main menu...")
             stop_thread = True
             bot_thread.join()
@@ -197,12 +197,12 @@ while True:
                 pass # Ignore errors if window is already visible/active
             break
 
-        if keyboard.is_pressed('q'):
+        if keyboard.is_pressed('½'):
             print("Hiding window (bot continues running)...")
             game_window.hide() # hides the window
             time.sleep(0.5)
 
-        if keyboard.is_pressed('y'):
+        if keyboard.is_pressed('#'):
             print("Showing window...")
             game_window.show() # shows the window
             time.sleep(0.5)
